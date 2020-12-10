@@ -16,9 +16,9 @@ int main(){
     const int N = 1000;
     int n = 0, firstn, secondn;
     string line, lett, pass;
-    ifstream myfile("advent2.txt");
-    if(myfile.is_open()){
-        while(getline(myfile, line)) {
+    ifstream adv2("advent2.txt");
+    if(adv2.is_open()){
+        while(getline(adv2, line)) {
             firstn = stoi(line);
             line.erase(0, digits(firstn) + 1);
             secondn = stoi(line);
@@ -30,7 +30,7 @@ int main(){
                 n++;
             }
         }
-        myfile.close();
+        adv2.close();
     }
     cout << n;
     return 0;

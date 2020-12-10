@@ -8,13 +8,13 @@ int main(){
     int a, b, c, l = 0;
     string line;
     int vect[N];
-    ifstream myfile("advent1.txt");
-    if(myfile.is_open()){
-        while(getline(myfile, line)) {
+    ifstream adv1("advent1.txt");
+    if(adv1.is_open()){
+        while(getline(adv1, line)) {
             vect[l] = stoi(line);
             l++;
         }
-        myfile.close();
+        adv1.close();
     }
     for(int k = 0; k < N; k++){
         for(int j = k; j < N; j++){
