@@ -26,6 +26,6 @@ int main(){
             ++p;
         }
     }
-    cout << "part 2: " << p << endl;
+    cout << "part 2: " << p;
     return 0;
 }
