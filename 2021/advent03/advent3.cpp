@@ -13,7 +13,7 @@ int bin_to_dec(string bin){
     return dec;
 }
 
-bool one_most_comm(vector<string> vect, int p, string type){
+bool one_most_comm(vector<string> vect, int p){
     int k = 0;
     for(int j = 0; j < vect.size(); ++j){
         if(vect[j].substr(p, 1) == "1"){
@@ -29,7 +29,7 @@ bool one_most_comm(vector<string> vect, int p, string type){
 int main(){
     string line;
     vector<string> report;
-    ifstream adv3("advent03.txt");
+    ifstream adv3("advent3.txt");
     if(adv3.is_open()){
         while(getline(adv3, line)){
             report.push_back(line);
@@ -38,7 +38,7 @@ int main(){
     }
     string gamma = "", epsilon = "";
     for(int i = 0; i < line.size(); ++i){
-        if(one_most_comm(report, i, "p1")){
+        if(one_most_comm(report, i)){
             gamma.push_back('1');
             epsilon.push_back('0');
         } else {
@@ -49,7 +49,7 @@ int main(){
     cout << "part 1: " << bin_to_dec(gamma) * bin_to_dec(epsilon) << endl;
     vector<string> oxy_cand = report;
     for(int n = 0; n < line.size(); ++n){
-        if(one_most_comm(oxy_cand, n, "oxy")){
+        if(one_most_comm(oxy_cand, n)){
             for(int a = 0; a < oxy_cand.size(); ++a){
                 if(oxy_cand[a].substr(n, 1) == "0"){
                     oxy_cand.erase(oxy_cand.begin() + a);
@@ -67,16 +67,16 @@ int main(){
     }
     vector<string> co2_cand = report;
     for(int m = 0; m < line.size(); ++m){
-        if(not one_most_comm(co2_cand, m, "co2")){
+        if(one_most_comm(co2_cand, m)){
             for(int c = 0; c < co2_cand.size(); ++c){
-                if(co2_cand[c].substr(m, 1) == "0"){
+                if(co2_cand[c].substr(m, 1) == "1"){
                     co2_cand.erase(co2_cand.begin() + c);
                     --c;
                 }
             }
         } else {
             for(int d = 0; d < co2_cand.size(); ++d){
-                if(co2_cand[d].substr(m, 1) == "1"){
+                if(co2_cand[d].substr(m, 1) == "0"){
                     co2_cand.erase(co2_cand.begin() + d);
                     --d;
                 }
